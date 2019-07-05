@@ -38,16 +38,8 @@
     (with-standard-io-syntax
       (setf *db* (read in)))))
 
-; (defun select-by-artist (artist)
-;   (remove-if-not
-;    #'(lambda (cd) (equal (getf cd :artist) artist))
-;    *db*))
-
 (defun select (selector-fn)
   (remove-if-not selector-fn *db*))
-
-; (defun artist-selector (artist)
-;   #'(lambda (cd) (equal (getf cd :artist) artist)))
 
 (defun where (&key title artist rating (ripped nil ripped-p))
   #'(lambda (cd)
